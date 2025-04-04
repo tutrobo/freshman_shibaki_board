@@ -10,7 +10,7 @@ void robot_control(Motor &FR, Motor &FL, Motor &BR, Motor &BL, PS3 &ps3) {
   Tire_speed Tire_speed;
   while (true) {
     ps3.update();
-/*
+
     control.x = 0.5 * ps3.get_axis(PS3Axis::RIGHT_X);
     control.y = 0.5 * ps3.get_axis(PS3Axis::RIGHT_Y);
     if (ps3.get_key(PS3Key::R1)) {
@@ -20,8 +20,8 @@ void robot_control(Motor &FR, Motor &FL, Motor &BR, Motor &BL, PS3 &ps3) {
     } else {
       control.turnspeed = 0;
     }
-      */
-     
+      
+
     Tire_speed = mekanamu.output(control);
     FR.set_speed(Tire_speed.FR);
     FL.set_speed(Tire_speed.FL);
