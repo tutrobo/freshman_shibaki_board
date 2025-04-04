@@ -1,0 +1,3 @@
+[submodule "stm32rcos"]
+	path = stm32rcos
+	url = https://github.com/eyr1n/stm32rcos.git
