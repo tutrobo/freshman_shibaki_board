@@ -34,14 +34,14 @@ public:
       move_theta = -M_PI / 2;
     }
     // 平行移動の目標出力
-    tire_speed.FR = -1 * (move_speed * cos(move_theta + M_PI / 4) -
+    tire_speed.FR = (move_speed * cos(move_theta + M_PI / 4) -
                           control_.turnspeed); // 平行移動＋回転
     tire_speed.FL =
         move_speed * cos(move_theta - M_PI / 4) + control_.turnspeed;
     tire_speed.BR =
         -1 * (move_speed * cos(move_theta - M_PI / 4) - control_.turnspeed);
     tire_speed.BL =
-        move_speed * cos(move_theta + M_PI / 4) + control_.turnspeed;
+       -1*( move_speed * cos(move_theta + M_PI / 4) + control_.turnspeed);
 
     return tire_speed;
   }
