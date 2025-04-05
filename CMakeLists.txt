@@ -72,4 +72,5 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
     # Add user defined libraries
     stm32rcos
     stm32rcos_f103xx
+    "-u _printf_float"
 )
