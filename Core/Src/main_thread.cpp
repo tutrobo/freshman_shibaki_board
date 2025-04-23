@@ -19,7 +19,7 @@ extern "C" void main_thread(void *) {
   using namespace stm32rcos_drivers;
 
   Uart uart1(&huart1);
-  PS3 ps3(uart1);
+  Ps3 ps3(uart1);
 
   Uart uart2(&huart2);
   enable_stdout(uart2);

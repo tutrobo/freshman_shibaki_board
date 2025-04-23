@@ -5,7 +5,7 @@
 
 using namespace stm32rcos_drivers;
 
-void robot_control(Motor &FR, Motor &FL, Motor &BR, Motor &BL, PS3 &ps3,
+void robot_control(Motor &FR, Motor &FL, Motor &BR, Motor &BL, Ps3 &ps3,
                    TIM_HandleTypeDef *htim3) {
   Control control;
   MekanamuController mekanamu;
@@ -15,29 +15,29 @@ void robot_control(Motor &FR, Motor &FL, Motor &BR, Motor &BL, PS3 &ps3,
   while (true) {
     ps3.update();
 
-    control.x = 0.3;//-0.3 * ps3.get_axis(PS3Axis::RIGHT_X);
-    control.y = 0.3 * ps3.get_axis(PS3Axis::RIGHT_Y);
+    control.x = 0.3; //-0.3 * ps3.get_axis(Ps3Axis::RIGHT_X);
+    control.y = 0.3 * ps3.get_axis(Ps3Axis::RIGHT_Y);
     if (control.x == 0 && control.y == 0) {
-      if (ps3.get_key(PS3Key::R1)) {
+      if (ps3.get_key(Ps3Key::R1)) {
         control.turnspeed = -0.2;
-      } else if (ps3.get_key(PS3Key::L1)) {
+      } else if (ps3.get_key(Ps3Key::L1)) {
         control.turnspeed = 0.2;
       } else {
         control.turnspeed = 0;
       }
     } else {
-      if (ps3.get_key(PS3Key::R1)) {
+      if (ps3.get_key(Ps3Key::R1)) {
         control.turnspeed = -0.1;
-      } else if (ps3.get_key(PS3Key::L1)) {
+      } else if (ps3.get_key(Ps3Key::L1)) {
         control.turnspeed = 0.1;
       } else {
         control.turnspeed = 0;
       }
     }
 
-    if (ps3.get_key_down(PS3Key::CIRCLE)) {
+    if (ps3.get_key_down(Ps3Key::CIRCLE)) {
       __HAL_TIM_SET_COMPARE(htim3, TIM_CHANNEL_1, 700);
-    } else if (ps3.get_key_down(PS3Key::TRIANGLE)) {
+    } else if (ps3.get_key_down(Ps3Key::TRIANGLE)) {
       __HAL_TIM_SET_COMPARE(htim3, TIM_CHANNEL_1, 1700);
     }
 
@@ -46,7 +46,7 @@ void robot_control(Motor &FR, Motor &FL, Motor &BR, Motor &BL, PS3 &ps3,
     FL.set_speed(1.25 * Tire_speed.FL);
     BR.set_speed(Tire_speed.BR);
     BL.set_speed(Tire_speed.BL);
-    printf("FR: %f, FL: %f, BR: %f, BL: %f\n", Tire_speed.FR,
-           Tire_speed.FL, Tire_speed.BR, Tire_speed.BL);
+    printf("FR: %f, FL: %f, BR: %f, BL: %f\n", Tire_speed.FR, Tire_speed.FL,
+           Tire_speed.BR, Tire_speed.BL);
   }
 }

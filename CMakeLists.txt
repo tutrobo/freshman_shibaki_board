@@ -65,11 +65,11 @@ target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE
 include(FetchContent)
 FetchContent_Declare(stm32rcos
   GIT_REPOSITORY https://github.com/eyr1n/stm32rcos.git
-  GIT_TAG 659fe7f480bd9bf7b14ef1896e398c5d9b885317
+  GIT_TAG 0eeffd247fae6df7a39bc73cf512d438b77705ed
 )
 FetchContent_Declare(stm32rcos_drivers
   GIT_REPOSITORY https://github.com/eyr1n/stm32rcos_drivers.git
-  GIT_TAG 10f4a2296311194efbe62f1e0af576a0662d6d4c
+  GIT_TAG 16328b0efb4699cf5388f17ca2bedec15bc545e4
 )
 FetchContent_MakeAvailable(stm32rcos stm32rcos_drivers)
 
