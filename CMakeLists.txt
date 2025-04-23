@@ -62,8 +62,16 @@ target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined symbols
 )
 
-add_subdirectory(stm32rcos)
-add_subdirectory(stm32rcos/f103xx)
+include(FetchContent)
+FetchContent_Declare(stm32rcos
+  GIT_REPOSITORY https://github.com/eyr1n/stm32rcos.git
+  GIT_TAG 659fe7f480bd9bf7b14ef1896e398c5d9b885317
+)
+FetchContent_Declare(stm32rcos_drivers
+  GIT_REPOSITORY https://github.com/eyr1n/stm32rcos_drivers.git
+  GIT_TAG 10f4a2296311194efbe62f1e0af576a0662d6d4c
+)
+FetchContent_MakeAvailable(stm32rcos stm32rcos_drivers)
 
 # Add linked libraries
 target_link_libraries(${CMAKE_PROJECT_NAME}
@@ -71,6 +79,6 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
 
     # Add user defined libraries
     stm32rcos
-    stm32rcos_f103xx
-    "-u _printf_float"
+    stm32rcos::printf_float
+    stm32rcos_drivers
 )
